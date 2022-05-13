@@ -1,6 +1,24 @@
 <template>
   <div>
-    <h4>Личные данные</h4>
+
+<!--    <table class="table table-bordered">-->
+<!--      <thead>-->
+<!--      <th scope="col"><h3>Личные данные</h3></th>-->
+<!--      <th scope="col"><h3>Данные пользователя</h3></th>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td>-->
+
+<!--        </td>-->
+<!--        <td>-->
+
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+
+    <h3>Личные данные</h3>
     <table class="table table-bordered">
       <thead>
       <th scope="col">ID</th>
@@ -40,59 +58,7 @@
       </tr>
     </table>
 
-
-    <h4 v-if="student != null">Данные студента</h4>
-    <h5 v-if="postStudentStatusResponse != null">{{postStudentStatus}}</h5>
-    <form v-if="student == null" v-on:submit.prevent="addStudent">
-      <input type="text" v-model="student_card_id" name="student_card_id" placeholder="Номер студенческого билета"/>
-      <input type="text" v-model="group_name_post" name="group_name" placeholder="Группа"/>
-      <input type="submit" class="btn btn-primary addStudent" value="Создать студента">
-    </form>
-
-    <table v-if="student != null" class="table table-bordered">
-      <thead>
-      <th scope="col">ID</th>
-      <th scope="col">Номер студенческого билета</th>
-      <th scope="col">Группа</th>
-      <th scope="col"></th>
-      </thead>
-      <tr>
-        <td>{{student.id}}</td>
-        <td>{{student.studentCardId}}</td>
-        <td>
-          <label>
-            <input type="text" v-model="group_name" name="group_name" :placeholder="group.name" />
-          </label>
-        </td>
-        <td>
-          <form v-on:submit.prevent="editStudent">
-            <input type="submit" class="btn btn-warning editStudent" value="Редактировать"/>
-          </form>
-        </td>
-      </tr>
-    </table>
-
-    <h4 v-if="teacher != null">Данные преподавателя</h4>
-    <h5 v-if="postTeacherStatusResponse != null">{{postTeacherStatus}}</h5>
-    <form v-if="teacher == null" v-on:submit.prevent="addTeacher">
-      <input type="submit" class="btn btn-primary addTeacher" value="Создать преподавателя">
-    </form>
-
-    <table v-if="teacher != null" class="table table-bordered">
-      <thead>
-      <th scope="col">ID</th>
-      <!--        <th scope="col">Предметы</th>-->
-      </thead>
-      <tr>
-        <td>{{teacher.id}}</td>
-        <!--            <td v-for="subject in {{teacher.subjects}}">-->
-        <!--                -->
-        <!--            </td>-->
-      </tr>
-    </table>
-
-
-    <h4 v-if="user != null">Данные пользователя</h4>
+    <h3>Данные пользователя</h3>
     <h5 v-if="postUserStatusResponse != null">{{postUserStatus}}</h5>
     <form v-if="user == null" v-on:submit.prevent="addUser">
       <input type="text" v-model="username" name="username" placeholder="Логин"/>
@@ -100,7 +66,6 @@
       <input type="text" v-model="role" name="role" placeholder="Роль"/>
       <input type="submit" class="btn btn-primary addUser" value="Создать пользователя">
     </form>
-
     <table v-if="user != null" class="table table-bordered">
       <thead>
       <th scope="col">ID</th>
@@ -130,6 +95,119 @@
         </td>
       </tr>
     </table>
+
+<!--    <h4 v-if="student != null">Данные студента</h4>-->
+<!--    <h5 v-if="postStudentStatusResponse != null">{{postStudentStatus}}</h5>-->
+<!--    <form v-if="student == null" v-on:submit.prevent="addStudent">-->
+<!--      <input type="text" v-model="student_card_id" name="student_card_id" placeholder="Номер студенческого билета"/>-->
+<!--      <input type="text" v-model="group_name_post" name="group_name" placeholder="Группа"/>-->
+<!--      <input type="submit" class="btn btn-primary addStudent" value="Создать студента">-->
+<!--    </form>-->
+
+<!--    <table v-if="student != null" class="table table-bordered">-->
+<!--      <thead>-->
+<!--      <th scope="col">ID</th>-->
+<!--      <th scope="col">Номер студенческого билета</th>-->
+<!--      <th scope="col">Группа</th>-->
+<!--      <th scope="col"></th>-->
+<!--      </thead>-->
+<!--      <tr>-->
+<!--        <td>{{student.id}}</td>-->
+<!--        <td>{{student.studentCardId}}</td>-->
+<!--        <td>-->
+<!--          <label>-->
+<!--            <input type="text" v-model="group_name" name="group_name" :placeholder="group.name" />-->
+<!--          </label>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          <form v-on:submit.prevent="editStudent">-->
+<!--            <input type="submit" class="btn btn-warning editStudent" value="Редактировать"/>-->
+<!--          </form>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </table>-->
+
+<!--    <h4 v-if="teacher != null">Данные преподавателя</h4>-->
+<!--    <h5 v-if="postTeacherStatusResponse != null">{{postTeacherStatus}}</h5>-->
+<!--    <form v-if="teacher == null" v-on:submit.prevent="addTeacher">-->
+<!--      <input type="submit" class="btn btn-primary addTeacher" value="Создать преподавателя">-->
+<!--    </form>-->
+
+<!--    <table v-if="teacher != null" class="table table-bordered">-->
+<!--      <thead>-->
+<!--      <th scope="col">ID</th>-->
+<!--      &lt;!&ndash;        <th scope="col">Предметы</th>&ndash;&gt;-->
+<!--      </thead>-->
+<!--      <tr>-->
+<!--        <td>{{teacher.id}}</td>-->
+<!--        &lt;!&ndash;            <td v-for="subject in {{teacher.subjects}}">&ndash;&gt;-->
+<!--        &lt;!&ndash;                &ndash;&gt;-->
+<!--        &lt;!&ndash;            </td>&ndash;&gt;-->
+<!--      </tr>-->
+<!--    </table>-->
+
+
+    <table class="table table-bordered">
+      <thead>
+      <th scope="col"><h3>Данные студента</h3></th>
+      <th scope="col"><h3>Данные преподавателя</h3></th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <h5 v-if="postStudentStatusResponse != null">{{postStudentStatus}}</h5>
+          <form v-if="student == null" v-on:submit.prevent="addStudent">
+            <input type="text" v-model="student_card_id" name="student_card_id" placeholder="Номер студенческого билета"/>
+            <input type="text" v-model="group_name_post" name="group_name" placeholder="Группа"/>
+            <input type="submit" class="btn btn-primary addStudent" value="Создать студента">
+          </form>
+
+          <table v-if="student != null" class="table table-bordered">
+            <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Номер студенческого билета</th>
+            <th scope="col">Группа</th>
+            <th scope="col"></th>
+            </thead>
+            <tr>
+              <td>{{student.id}}</td>
+              <td>{{student.studentCardId}}</td>
+              <td>
+                <label>
+                  <input type="text" v-model="group_name" name="group_name" :placeholder="group.name" />
+                </label>
+              </td>
+              <td>
+                <form v-on:submit.prevent="editStudent">
+                  <input type="submit" class="btn btn-warning editStudent" value="Редактировать"/>
+                </form>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <h5 v-if="postTeacherStatusResponse != null">{{postTeacherStatus}}</h5>
+          <form v-if="teacher == null" v-on:submit.prevent="addTeacher">
+            <input type="submit" class="btn btn-primary addTeacher" value="Создать преподавателя">
+          </form>
+
+          <table v-if="teacher != null" class="table table-bordered">
+            <thead>
+            <th scope="col">ID</th>
+            <!--        <th scope="col">Предметы</th>-->
+            </thead>
+            <tr>
+              <td>{{teacher.id}}</td>
+              <!--            <td v-for="subject in {{teacher.subjects}}">-->
+              <!--                -->
+              <!--            </td>-->
+            </tr>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
   </div>
 </template>
 
