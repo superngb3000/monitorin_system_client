@@ -31,6 +31,7 @@
       <th scope="col">Номер студенческого билета</th>
       <th scope="col"></th>
       </thead>
+      <tbody>
       <tr v-for="student in this.students" v-bind:key="student.id">
         <td>{{student.id}}</td>
         <td>{{student.personality}}</td>
@@ -39,6 +40,8 @@
           <router-link type="submit" class="btn btn-primary" :to="'/admin/personalities/' + student.personality">Подробнее</router-link>
         </td>
       </tr>
+      </tbody>
+
     </table>
   </div>
 </template>

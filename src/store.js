@@ -8,18 +8,20 @@ export default new Vuex.Store({
     status: '',
     token: localStorage.getItem('token') || '',
     user : {},
-    role: localStorage.getItem('role') || ''
+    role: localStorage.getItem('role') || '',
+    personality: localStorage.getItem('person') || null
   },
 
   mutations: {
     auth_request(state){
       state.status = 'loading'
     },
-    auth_success(state, token, user, role){
+    auth_success(state, token, user, role, personality){
       state.status = 'success'
       state.token = token
       state.user = user
       state.role = role
+      state.personality = personality
     },
     auth_error(state){
       state.status = 'error'
@@ -28,6 +30,7 @@ export default new Vuex.Store({
       state.status = ''
       state.token = ''
       state.role = ''
+      state.personality = null
     },
   },
 
@@ -38,6 +41,8 @@ export default new Vuex.Store({
         axios({url: 'http://localhost:8081/login', data: user, method: 'POST'})
             .then(resp => {
               const token = resp.data.token
+              const personality = resp.data.userDtoModel.personality
+              localStorage.setItem('personality', personality)
               const user = resp.data.userDtoModel
               const roles = resp.data.userDtoModel.roles
               localStorage.setItem('role', "ROLE_USER")
@@ -46,7 +51,7 @@ export default new Vuex.Store({
                   localStorage.setItem('role', "ROLE_ADMIN")
                 }
               }
-              console.log(user)
+              // console.log(user)
               localStorage.setItem('token', token)
               axios.defaults.headers.common['Authorization'] = token
               commit('auth_success', token, user)
@@ -65,6 +70,8 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit('logout')
         localStorage.removeItem('token')
+        localStorage.removeItem('role')
+        localStorage.removeItem('personality')
         delete axios.defaults.headers.common['Authorization']
         resolve()
       })
@@ -72,7 +79,10 @@ export default new Vuex.Store({
   },
 
   getters : {
-    isAdmin: state => (state.role === "ROLE_ADMIN"),
+    getPersonalityId: () => {
+        return localStorage.getItem('personality')
+    },
+    isAdmin: state => state.role === "ROLE_ADMIN",
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
   }

@@ -13,15 +13,13 @@ import AdminPersonalities from "@/views/admin/AdminPersonalities";
 import TeacherPage from "@/components/teacher/TeacherPage";
 import TeacherSubjects from "@/views/teacher/TeacherSubjects";
 import TeacherGroups from "@/views/teacher/TeacherGroups";
-import TeacherStudents from "@/views/teacher/TeacherStudents";
-import TeacherLessons from "@/views/teacher/TeacherLessons";
-import TeacherCheckpoints from "@/views/teacher/TeacherCheckpoints";
 import AdminGroup from "@/views/admin/AdminGroup";
 import AdminPerson from "@/views/admin/AdminPerson";
 import AdminSubject from "@/views/admin/AdminSubject";
 import AdminSubjectGroup from "@/views/admin/AdminSubjectGroup";
 import TeacherSubject from "@/views/teacher/TeacherSubject";
 import TeacherSubjectGroup from "@/views/teacher/TeacherSubjectGroup";
+import TeacherGroup from "@/views/teacher/TeacherGroup";
 
 Vue.use(Router)
 
@@ -120,29 +118,19 @@ let router = new Router({
           component: TeacherGroups
         },
         {
-          path: '/teacher/students',
-          name: 'teacherStudents',
-          component: TeacherStudents
-        },
-        {
-          path: '/teacher/lessons',
-          name: 'teacherLessons',
-          component: TeacherLessons
-        },
-        {
-          path: '/teacher/checkpoints',
-          name: 'teacherCheckpoints',
-          component: TeacherCheckpoints
-        },
-        {
-          path: '/teacher/subjects/:id',
+          path: '/teacher/subject/:id',
           name: 'teacherSubject',
           component: TeacherSubject
         },
         {
-          path: '/teacher/subjects/:subject_id/group/:group_id',
+          path: '/teacher/subject/:subject_id/group/:group_id',
           name: 'teacherSubjectGroup',
           component: TeacherSubjectGroup
+        },
+        {
+          path: '/teacher/group/:id',
+          name: 'teacherGroup',
+          component: TeacherGroup
         }
       ]
     },
