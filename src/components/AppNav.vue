@@ -2,17 +2,12 @@
   <div>
     <nav class="navbar bg-light">
       <router-link class="navbar-brand" to="/">Главная</router-link>
-      <router-link class="navbar-brand" to="/admin">Панель администратора</router-link>
-      <router-link class="navbar-brand" to="/teacher">Панель преподавателя</router-link>
+      <router-link class="navbar-brand" v-if="isAdmin" to="/admin">Панель администратора</router-link>
+      <router-link class="navbar-brand" v-if="isLoggedIn" to="/teacher">Панель преподавателя</router-link>
       <router-link class="navbar-brand" v-if="!isLoggedIn" to="/login">Войти</router-link>
-      <span v-if="isLoggedIn"><a @click="logout">Выйти</a></span>
+      <span v-else><a @click="logout">Выйти</a></span>
     </nav>
     <span></span>
-<!--    <div id="nav">-->
-<!--      <router-link to="/">Home</router-link> |-->
-<!--      <router-link to="/about">About</router-link>-->
-<!--      <span v-if="isLoggedIn"> | <a @click="logout">Logout</a></span>-->
-<!--    </div>-->
   </div>
 </template>
 
@@ -21,7 +16,8 @@ export default {
   name: "AppNav",
 
   computed : {
-    isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    isLoggedIn : function(){ return this.$store.getters.isLoggedIn },
+    isAdmin : function (){ return this.$store.getters.isAdmin }
   },
 
   methods: {

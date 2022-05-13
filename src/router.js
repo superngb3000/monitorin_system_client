@@ -2,8 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store.js'
 import HomeView from './views/HomeView.vue'
-import AboutView from './views/AboutView.vue'
-import SecurePage from './components/SecurePage.vue'
 import LoginPage from './components/LoginPage';
 import AdminUsers from "@/views/admin/AdminUsers";
 import AdminTeachers from "@/views/admin/AdminTeachers";
@@ -41,23 +39,13 @@ let router = new Router({
       component: LoginPage
     },
     {
-      path: '/secure',
-      name: 'secure',
-      component: SecurePage,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: AboutView
-    },
-
-    {
       path: '/admin',
       name: 'admin',
       component: AdminPage,
+      meta: {
+        requiresAuth: true,
+        requiresAdmin: true
+      },
       children: [
         {
           path: '/admin/personalities',
@@ -117,6 +105,9 @@ let router = new Router({
       path: '/teacher',
       name: 'teacher',
       component: TeacherPage,
+      meta: {
+        requiresAuth: true
+      },
       children: [
         {
           path: '/teacher/subjects',
@@ -165,6 +156,28 @@ router.beforeEach((to, from, next) => {
       return
     }
     next('/login')
+  } else {
+    next()
+  }
+
+  if(to.matched.some(record => record.meta.requiresAdmin)) {
+    if (store.getters.isAdmin) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAdmin)) {
+    if (store.getters.isAdmin) {
+      next()
+      return
+    }
+    next('/')
   } else {
     next()
   }

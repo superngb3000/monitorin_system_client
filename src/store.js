@@ -7,17 +7,19 @@ export default new Vuex.Store({
   state: {
     status: '',
     token: localStorage.getItem('token') || '',
-    user : {}
+    user : {},
+    role: localStorage.getItem('role') || ''
   },
 
   mutations: {
     auth_request(state){
       state.status = 'loading'
     },
-    auth_success(state, token, user){
+    auth_success(state, token, user, role){
       state.status = 'success'
       state.token = token
       state.user = user
+      state.role = role
     },
     auth_error(state){
       state.status = 'error'
@@ -25,6 +27,7 @@ export default new Vuex.Store({
     logout(state) {
       state.status = ''
       state.token = ''
+      state.role = ''
     },
   },
 
@@ -36,6 +39,14 @@ export default new Vuex.Store({
             .then(resp => {
               const token = resp.data.token
               const user = resp.data.userDtoModel
+              const roles = resp.data.userDtoModel.roles
+              localStorage.setItem('role', "ROLE_USER")
+              for (let role of roles){
+                if (role === "ROLE_ADMIN"){
+                  localStorage.setItem('role', "ROLE_ADMIN")
+                }
+              }
+              console.log(user)
               localStorage.setItem('token', token)
               axios.defaults.headers.common['Authorization'] = token
               commit('auth_success', token, user)
@@ -61,6 +72,7 @@ export default new Vuex.Store({
   },
 
   getters : {
+    isAdmin: state => (state.role === "ROLE_ADMIN"),
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
   }
