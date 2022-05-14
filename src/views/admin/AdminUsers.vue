@@ -17,7 +17,7 @@
       <label>
         <input type="checkbox" v-model="role_admin" value="true" name="ROLE_ADMIN"/>ROLE_ADMIN
       </label>
-      <input type="submit" class="btn btn-primary findUsers" value="Найти">
+      <input type="submit" class="btn btn-secondary findUsers" value="Найти">
     </form>
 
     <table class="table table-bordered">
@@ -37,7 +37,7 @@
           <h5 v-for="role in user.roles" v-bind:key="role.id">{{role}}</h5>
         </td>
         <td>
-          <router-link type="submit" class="btn btn-primary showStudent" :to="'/admin/personalities/' + user.personality">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info showStudent" :to="'/admin/personalities/' + user.personality">Подробнее</router-link>
         </td>
       </tr>
       </tbody>

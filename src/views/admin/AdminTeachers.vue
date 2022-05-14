@@ -7,25 +7,21 @@
     <form v-on:submit.prevent="findTeachers">
       <input type="number" v-model="id" name="id" placeholder="ID"/>
       <input type="number" v-model="personality_id" name="personalityId" placeholder="ID Личного дела"/>
-      <input type="submit" class="btn btn-primary findTeachers" value="Найти">
+      <input type="submit" class="btn btn-secondary findTeachers" value="Найти">
     </form>
 
     <table class="table table-bordered">
       <thead>
       <th scope="col">ID</th>
       <th scope="col">ID Личного дела</th>
-<!--      <th scope="col">ID предметов</th>-->
       <th scope="col"></th>
       </thead>
       <tbody>
       <tr v-for="teacher in this.teachers" v-bind:key="teacher.id">
         <td>{{teacher.id}}</td>
         <td>{{teacher.personality}}</td>
-<!--        <td v-for="subject in this.subjects" v-bind:key="subject.id">-->
-<!--          {{subject}}-->
-<!--        </td>-->
         <td>
-          <router-link type="submit" class="btn btn-primary showStudent" :to="'/admin/personalities/' + teacher.personality">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info showStudent" :to="'/admin/personalities/' + teacher.personality">Подробнее</router-link>
         </td>
       </tr>
       </tbody>
@@ -45,7 +41,6 @@ export default {
       subject_id: null,
       teachers: [],
       personalityId: null,
-
     }
   },
   async mounted(){

@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="findSubjects">
       <input type="number" v-model="id" name="id" placeholder="ID"/>
       <input type="text" v-model="name" name="name" placeholder="Название предмета"/>
-      <input type="submit" class="btn btn-primary findSubjects" value="Найти">
+      <input type="submit" class="btn btn-secondary findSubjects" value="Найти">
     </form>
 
     <table class="table table-bordered">
@@ -15,7 +15,7 @@
       <tr v-for="subject in this.subjects" v-bind:key="subject.id">
         <td>{{subject.name}}</td>
         <td>
-          <router-link type="submit" class="btn btn-primary showSubject" :to="'/teacher/subject/' + subject.id">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info showSubject" :to="'/teacher/subject/' + subject.id">Подробнее</router-link>
         </td>
       </tr>
       </tbody>

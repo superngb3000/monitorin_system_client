@@ -19,14 +19,10 @@
           <table class="table table-bordered">
             <thead>
               <th scope="col"></th>
-<!--              <th scope="col"></th>-->
             </thead>
             <tbody>
             <tr v-for="lesson in this.lessons" v-bind:key="lesson.id">
               <td>{{lesson.name}}</td>
-<!--              <td>-->
-<!--                <router-link type="submit" class="btn btn-primary" :to="'/teacher/lesson/' + lesson.id">Подробнее</router-link>-->
-<!--              </td>-->
             </tr>
             </tbody>
           </table>
@@ -39,14 +35,10 @@
           <table class="table table-bordered">
             <thead>
               <th scope="col"></th>
-<!--              <th scope="col"></th>-->
             </thead>
             <tbody>
             <tr v-for="checkpoint in this.checkpoints" v-bind:key="checkpoint.id">
               <td>{{checkpoint.name}}</td>
-<!--              <td>-->
-<!--                <router-link type="submit" class="btn btn-primary" :to="'/teacher/checkpoint/' + checkpoint.id">Подробнее</router-link>-->
-<!--              </td>-->
             </tr>
             </tbody>
           </table>
@@ -66,10 +58,10 @@
       <tr v-for="group in this.groups" v-bind:key="group.id">
         <td>{{group.name}}</td>
         <td>
-          <router-link type="submit" class="btn btn-primary" :to="'/teacher/group/' + group.id">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info" :to="'/teacher/group/' + group.id">Подробнее</router-link>
         </td>
         <td>
-          <router-link type="submit" class="btn btn-primary" :to="'/teacher/subject/' + $data.id + '/group/' + group.id">Оценки</router-link>
+          <router-link type="submit" class="btn btn-outline-info" :to="'/teacher/subject/' + $data.id + '/group/' + group.id">Оценки</router-link>
         </td>
       </tr>
       </tbody>

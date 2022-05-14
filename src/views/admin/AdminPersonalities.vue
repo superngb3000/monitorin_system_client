@@ -13,7 +13,7 @@
       <input type="text" v-model="second_name" name="second_name" placeholder="Фамилия"/>
       <input type="text" v-model="first_name" name="first_name" placeholder="Имя"/>
       <input type="text" v-model="middle_name" name="middle_name" placeholder="Отчество"/>
-      <input type="submit" class="btn btn-primary findPersonalities" value="Найти">
+      <input type="submit" class="btn btn-secondary findPersonalities" value="Найти">
     </form>
     <table class="table table-bordered">
       <thead>
@@ -32,7 +32,7 @@
         <td >{{personality.middleName}}</td>
         <td >{{personality.email}}</td>
         <td>
-            <router-link type="submit" class="btn btn-primary" :to="'/admin/personalities/' + personality.id" >Подробнее</router-link>
+            <router-link type="submit" class="btn btn-info" :to="'/admin/personalities/' + personality.id" >Подробнее</router-link>
         </td>
       </tr>
       </tbody>

@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="findGroups">
       <input type="number" v-model="id" name="id" placeholder="ID"/>
       <input type="text" v-model="name" name="name" placeholder="Имя группы"/>
-      <input type="submit" class="btn btn-primary findGroups" value="Найти">
+      <input type="submit" class="btn btn-secondary findGroups" value="Найти">
     </form>
 
     <table class="table table-bordered">
@@ -15,7 +15,7 @@
       <tr v-for="group in this.groups" v-bind:key="group.id">
         <td>{{group.name}}</td>
         <td>
-          <router-link type="submit" class="btn btn-primary" :to="'/teacher/group/' + group.id">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info" :to="'/teacher/group/' + group.id">Подробнее</router-link>
         </td>
       </tr>
       </tbody>
@@ -31,7 +31,6 @@ export default {
   data() {
     return {
       id: null,
-      post_name: '',
       name: '',
       groups: []
     }

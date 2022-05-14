@@ -39,14 +39,10 @@
           <table class="table table-bordered">
             <thead>
             <th scope="col"></th>
-            <!--              <th scope="col"></th>-->
             </thead>
             <tbody>
             <tr v-for="lesson in this.lessons" v-bind:key="lesson.id">
               <td>{{lesson.name}}</td>
-              <!--              <td>-->
-              <!--                <router-link type="submit" class="btn btn-primary" :to="'/teacher/lesson/' + lesson.id">Подробнее</router-link>-->
-              <!--              </td>-->
             </tr>
             </tbody>
           </table>
@@ -59,14 +55,10 @@
           <table class="table table-bordered">
             <thead>
             <th scope="col"></th>
-            <!--              <th scope="col"></th>-->
             </thead>
             <tbody>
             <tr v-for="checkpoint in this.checkpoints" v-bind:key="checkpoint.id">
               <td>{{checkpoint.name}}</td>
-              <!--              <td>-->
-              <!--                <router-link type="submit" class="btn btn-primary" :to="'/teacher/checkpoint/' + checkpoint.id">Подробнее</router-link>-->
-              <!--              </td>-->
             </tr>
             </tbody>
           </table>
@@ -74,44 +66,6 @@
       </tr>
       </tbody>
     </table>
-
-<!--    <h4>Лекции</h4>-->
-<!--    <form v-on:submit.prevent="addLessonToSubject">-->
-<!--      <input type="text" v-model="lesson_name" name="lesson_name" placeholder="Название лекции"/>-->
-<!--      <input type="submit" class="btn btn-primary addLessonToSubject" value="Добавить">-->
-<!--    </form>-->
-<!--    <table class="table table-bordered">-->
-<!--      <thead>-->
-<!--      <th scope="col">ID</th>-->
-<!--      <th scope="col">Название лекции</th>-->
-<!--      <th scope="col"></th>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr v-for="lesson in this.lessons" v-bind:key="lesson.id">-->
-<!--        <td>{{lesson.id}}</td>-->
-<!--        <td>{{lesson.name}}</td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-
-<!--    <h4>Оцениваемые работы</h4>-->
-<!--    <form v-on:submit.prevent="addCheckpointToSubject">-->
-<!--      <input type="text" v-model="checkpoint_name" name="checkpoint_name" placeholder="Название работы"/>-->
-<!--      <input type="submit" class="btn btn-primary addCheckpointToSubject" value="Добавить">-->
-<!--    </form>-->
-<!--    <table class="table table-bordered">-->
-<!--      <thead>-->
-<!--      <th scope="col">ID</th>-->
-<!--      <th scope="col">Название работы</th>-->
-<!--      <th scope="col"></th>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr v-for="checkpoint in this.checkpoints" v-bind:key="checkpoint.id">-->
-<!--        <td>{{checkpoint.id}}</td>-->
-<!--        <td>{{checkpoint.name}}</td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
 
     <table class="table table-bordered">
       <thead>
@@ -136,7 +90,7 @@
               <td>{{teacher.id}}</td>
               <td>{{teacher.personality}}</td>
               <td>
-                <router-link type="submit" class="btn btn-primary" :to="'/admin/personalities/' + teacher.personality">Подробнее</router-link>
+                <router-link type="submit" class="btn btn-info" :to="'/admin/personalities/' + teacher.personality">Подробнее</router-link>
               </td>
             </tr>
             </tbody>
@@ -158,10 +112,10 @@
               <td>{{group.id}}</td>
               <td>{{group.name}}</td>
               <td>
-                <router-link type="submit" class="btn btn-primary" :to="'/admin/group/' + group.id">Подробнее</router-link>
+                <router-link type="submit" class="btn btn-info" :to="'/admin/group/' + group.id">Подробнее</router-link>
               </td>
               <td>
-                <router-link type="submit" class="btn btn-primary" :to="'/admin/subject/' + $data.id + '/group/' + group.id">Оценки</router-link>
+                <router-link type="submit" class="btn btn-outline-info" :to="'/admin/subject/' + $data.id + '/group/' + group.id">Оценки</router-link>
               </td>
             </tr>
             </tbody>
@@ -170,53 +124,6 @@
       </tr>
       </tbody>
     </table>
-
-<!--    <h4>Преподаватели</h4>-->
-<!--    <form v-on:submit.prevent="addTeacherToSubject">-->
-<!--      <input type="number" v-model="teacher_id" name="teacherId" placeholder="ID преподавателя"/>-->
-<!--      <input type="submit" class="btn btn-primary addTeacherToSubject" value="Добавить">-->
-<!--    </form>-->
-<!--    <table class="table table-bordered">-->
-<!--      <thead>-->
-<!--      <th scope="col">ID</th>-->
-<!--      <th scope="col">ID личного дела</th>-->
-<!--      <th scope="col"></th>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr v-for="teacher in this.teachers" v-bind:key="teacher.id">-->
-<!--        <td>{{teacher.id}}</td>-->
-<!--        <td>{{teacher.personality}}</td>-->
-<!--        <td>-->
-<!--          <router-link type="submit" class="btn btn-primary" :to="'/admin/personalities/' + teacher.personality">Подробнее</router-link>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-
-<!--    <h4>Группы</h4>-->
-<!--    <form v-on:submit.prevent="addGroupToSubject">-->
-<!--      <input type="number" v-model="group_id" name="groupId" placeholder="ID группы"/>-->
-<!--      <input type="submit" class="btn btn-primary addGroupToSubject" value="Добавить">-->
-<!--    </form>-->
-<!--    <table class="table table-bordered">-->
-<!--      <thead>-->
-<!--      <th scope="col">ID</th>-->
-<!--      <th scope="col">Название группы</th>-->
-<!--      <th scope="col"></th>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr v-for="group in this.groups" v-bind:key="group.id">-->
-<!--        <td>{{group.id}}</td>-->
-<!--        <td>{{group.name}}</td>-->
-<!--        <td>-->
-<!--          <router-link type="submit" class="btn btn-primary" :to="'/admin/group/' + group.id">Подробнее</router-link>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--          <router-link type="submit" class="btn btn-primary" :to="'/admin/subject/' + $data.id + '/group/' + group.id">Оценки</router-link>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
   </div>
 </template>
 

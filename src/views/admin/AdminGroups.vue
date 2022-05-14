@@ -9,7 +9,7 @@
     <form v-on:submit.prevent="findGroups">
       <input type="number" v-model="id" name="id" placeholder="ID"/>
       <input type="text" v-model="name" name="name" placeholder="Имя группы"/>
-      <input type="submit" class="btn btn-primary findGroups" value="Найти">
+      <input type="submit" class="btn btn-secondary findGroups" value="Найти">
     </form>
 
     <table class="table table-bordered">
@@ -23,7 +23,7 @@
         <td>{{group.id}}</td>
         <td>{{group.name}}</td>
         <td>
-          <router-link type="submit" class="btn btn-primary" :to="'/admin/group/' + group.id">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info" :to="'/admin/group/' + group.id">Подробнее</router-link>
         </td>
       </tr>
       </tbody>
@@ -41,9 +41,7 @@ export default {
       id: null,
       post_name: '',
       name: '',
-      deleted: '',
       groups: [],
-
       postStatus: '',
       postStatusResponse: null
     }

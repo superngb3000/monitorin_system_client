@@ -37,7 +37,7 @@
         <td>{{student.personality}}</td>
         <td>{{student.studentCardId}}</td>
         <td>
-          <router-link type="submit" class="btn btn-primary" :to="'/admin/personalities/' + student.personality">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info" :to="'/admin/personalities/' + student.personality">Подробнее</router-link>
         </td>
       </tr>
       </tbody>

@@ -11,7 +11,7 @@
       <input type="text" v-model="student_card_id" name="studentCardId" placeholder="Номер студенческой книжки"/>
       <input type="number" v-model="personality_id" name="personalityId" placeholder="ID Личного дела"/>
       <input type="number" v-model="group_id" name="groupId" placeholder="ID группы"/>
-      <input type="submit" class="btn btn-primary findStudents" value="Найти">
+      <input type="submit" class="btn btn-secondary findStudents" value="Найти">
     </form>
 
     <table class="table table-bordered">
@@ -29,7 +29,7 @@
         <td>{{student.studentCardId}}</td>
         <td>{{student.group}}</td>
         <td>
-          <router-link type="submit" class="btn btn-primary showStudent" :to="'/admin/personalities/' + student.personality">Подробнее</router-link>
+          <router-link type="submit" class="btn btn-info showStudent" :to="'/admin/personalities/' + student.personality">Подробнее</router-link>
         </td>
       </tr>
       </tbody>
@@ -53,7 +53,6 @@ export default {
       personalityId: null,
       student_cardId: '',
       group_name_post: ''
-
     }
   },
   async mounted(){
