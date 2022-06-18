@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ADMIN_API_BASE_URL = 'http://localhost:8081/admin';
+const ADMIN_API_BASE_URL = 'https://monitoring-system-back.herokuapp.com/admin';
 
 class AdminPersonalitiesService {
 

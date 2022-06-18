@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TEACHER_API_BASE_URL = 'http://localhost:8081/teacher';
+const TEACHER_API_BASE_URL = 'https://monitoring-system-back.herokuapp.com/teacher';
 
 class TeacherMarksService {
 
